@@ -20,7 +20,7 @@ namespace App.Core.Commands
         {
             var settings = new PosterSettings {
                 SkipForCount = 7,
-                ResultCount = BotState.Instance.Get(activity.Conversation?.Id, Constants.PostCountParameter, 1),
+                ResultCount = BotState.Instance.Get(activity.Conversation?.Id, Constants.PostCountParameter, 3),
             };
             var imagePoster = new KorzikDailyPoster(Randomizer, new PatternMatcher());
             return await imagePoster.PostAsync(settings);

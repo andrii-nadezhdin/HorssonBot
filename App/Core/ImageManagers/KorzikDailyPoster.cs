@@ -7,7 +7,7 @@ namespace App.Core.ImageManagers
 {
 	internal class KorzikDailyPoster
 	{
-		private const string _rootUri = "http://korzik.net";
+		private const string _rootUri = "https://korzik.net";
 		private readonly string _imageUploadUrl = $"{_rootUri}/uploads/posts";
 		protected readonly string _eroticaUrl = $"{_rootUri}/erotika";
 
