@@ -1,13 +1,11 @@
 ﻿using System.Configuration;
+using System.Linq;
 using System.Web.Http;
 using Autofac;
-using Core;
 using Host.Controllers.App_Start;
 using Microsoft.ApplicationInsights.Extensibility;
 using Core.Base;
-using Core.Commands;
 using Core.Configuration;
-using Core.ImageManagers;
 
 namespace Host
 {
@@ -18,7 +16,15 @@ namespace Host
         protected void Application_Start()
 		{
 			GlobalConfiguration.Configure(WebApiConfig.Register);
-		    TelemetryConfiguration.Active.InstrumentationKey = ConfigurationManager.AppSettings[AppInsightsInstrumentationKeyName];
+		    if (ConfigurationManager.AppSettings.AllKeys.Any(k => k == AppInsightsInstrumentationKeyName))
+		    {
+		        TelemetryConfiguration.Active.InstrumentationKey =
+		            ConfigurationManager.AppSettings[AppInsightsInstrumentationKeyName];
+		    }
+		    else
+		    {
+		        TelemetryConfiguration.Active.DisableTelemetry = true;
+            }   
             var builder = new ContainerBuilder();
 		    CoreResolver.Configure(builder);
             var container = builder.Build();

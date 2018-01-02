@@ -71,7 +71,7 @@ namespace Core.ImageManagers
 			{
 				html = client.DownloadString(pageUrl);
 			}
-			var topics = _patternMatcher.GetPatternValues(html, $"<a (.*?)href=\"({_eroticaUrl}/.*?eromiks.*?.html)\"(.*?)>");
+			var topics = _patternMatcher.GetPatternValues(html, $"<a (.*?)href=\"({_eroticaUrl}/.*?(eromiks|ero-miks).*?.html)\"(.*?)>");
 			if (topics.Count != 0)
 			{
 				return _randomizer.GetRandomFromList(topics);
