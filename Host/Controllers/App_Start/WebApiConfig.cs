@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using System.Web.Http.ExceptionHandling;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -29,6 +30,8 @@ namespace Host.Controllers.App_Start
 				routeTemplate: "api/{controller}/{id}",
 				defaults: new { id = RouteParameter.Optional }
 			);
-		}
+
+		    config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger());
+        }
 	}
 }

@@ -16,7 +16,7 @@ namespace Host
         protected void Application_Start()
 		{
 			GlobalConfiguration.Configure(WebApiConfig.Register);
-		    if (ConfigurationManager.AppSettings.AllKeys.Any(k => k == AppInsightsInstrumentationKeyName))
+            if (ConfigurationManager.AppSettings.AllKeys.Any(k => k == AppInsightsInstrumentationKeyName))
 		    {
 		        TelemetryConfiguration.Active.InstrumentationKey =
 		            ConfigurationManager.AppSettings[AppInsightsInstrumentationKeyName];

@@ -23,6 +23,5 @@ namespace Core
 		{
 			_workingChannels.TryRemove($"{channelId}.{parameter}", out _);
 		}
-
 	}
 }
