@@ -86,18 +86,21 @@
     <Compile Include="BotState.cs" />
     <Compile Include="CommandResponsible.cs" />
     <Compile Include="Commands\CommandBase.cs" />
-    <Compile Include="Commands\DefaultCommand.cs" />
     <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="Commands\InterractCommand.cs" />
-    <Compile Include="Commands\PostImageCommand.cs" />
+    <Compile Include="Commands\NevsedomaPostImageCommand.cs" />
+    <Compile Include="Commands\KorzikPostImageCommand.cs" />
     <Compile Include="Commands\SetPostCountCommand.cs" />
     <Compile Include="Configuration\CoreResolver.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="ICommandResponsible.cs" />
+    <Compile Include="ImageManagers\ContentProviders\IStaticImageProvider.cs" />
+    <Compile Include="ImageManagers\ContentProviders\KorzikEromiksProvider.cs" />
+    <Compile Include="ImageManagers\ContentProviders\NevsedomaGirlsProvider.cs" />
     <Compile Include="ImageManagers\IPatternMatcher.cs" />
-    <Compile Include="ImageManagers\KorzikDailyPoster.cs" />
+    <Compile Include="ImageManagers\StaticContentImagePoster.cs" />
     <Compile Include="ImageManagers\PatternMatcher.cs" />
-    <Compile Include="ImageManagers\PosterSettings.cs" />
+    <Compile Include="ImageManagers\StaticContentPosterSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
