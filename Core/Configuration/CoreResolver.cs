@@ -14,10 +14,10 @@ namespace Core.Configuration
             builder.RegisterType<CommandResponsible>().As<ICommandResponsible>()
                 .SingleInstance()
                 .OnActivated(c => c.Instance.RegisterNext<InterractCommand>()
-                    .RegisterNext<PostImageCommand>()
                     .RegisterNext<HelpCommand>()
                     .RegisterNext<SetPostCountCommand>()
-                    .RegisterNext<DefaultCommand>());
+                    .RegisterNext<NevsedomaPostImageCommand>()
+                    .RegisterNext<KorzikPostImageCommand>());
         }
     }
 }

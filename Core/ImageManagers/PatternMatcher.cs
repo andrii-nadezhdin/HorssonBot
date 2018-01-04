@@ -11,7 +11,7 @@ namespace Core.ImageManagers
             var list = new List<string>();
             foreach (Match match in matches)
             {
-                var value = match.Groups[2]?.Value;
+                var value = match.Groups[1]?.Value;
                 if (!string.IsNullOrEmpty(value) && !list.Contains(value))
                 {
                     list.Add(value);
