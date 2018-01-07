@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Core.Base;
@@ -31,7 +33,7 @@ namespace Core.ImageManagers
 				if (string.IsNullOrEmpty(topic))
 					continue;
 				var images = await GetImages(settings, topic);
-				if (images == null || images.Count == 0)
+				if (images == null || images?.Count == 0)
 					continue;
 				return images;
 			}
@@ -55,12 +57,14 @@ namespace Core.ImageManagers
             string html;
             using (var client = new WebClient())
                 html = await client.DownloadStringTaskAsync(topic);
-            var list = _patternMatcher.GetPatternValues(html, _imageProvider.ImagePattern);
+            var list = _patternMatcher.GetPatternValues(html, _imageProvider.ImagePattern)
+                ?.Skip(settings.SkipFirstFromPost)
+                .Where(u => Uri.IsWellFormedUriString(u, UriKind.Absolute))
+                .ToList();
             if (list.Count == 0)
                 return null;
-            list.RemoveAt(0);
-            if (list.Count > settings.ResultCount && list.Count > settings.SkipForCount)
-                return _randomizer.GetRandomFromList(list, settings.ResultCount);
+            if (list.Count >= settings.PostImageCount && list.Count >= settings.SkipPostWhenLessThen)
+                return _randomizer.GetRandomFromList(list, settings.PostImageCount);
             return null;
         }
     }

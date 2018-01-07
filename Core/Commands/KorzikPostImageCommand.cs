@@ -18,8 +18,9 @@ namespace Core.Commands
         {
             var settings = new StaticContentPosterSettings
             {
-                ResultCount = BotState.Instance.Get(activity.Conversation?.Id, Constants.PostCountParameter, 3),
-                SkipForCount = 7,
+                PostImageCount = BotState.Instance.Get(activity.Conversation?.Id, Constants.PostCountParameter, 3),
+                SkipPostWhenLessThen = 7,
+                SkipFirstFromPost = 1,
                 AvaliableIndexPages = 100
             };
             var imagePoster = new StaticContentImagePoster(Randomizer, new PatternMatcher(), new KorzikEromiksProvider());
