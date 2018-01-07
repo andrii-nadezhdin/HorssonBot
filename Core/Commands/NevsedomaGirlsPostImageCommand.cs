@@ -1,15 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Core.Base;
 using Core.ImageManagers;
 using Core.ImageManagers.ContentProviders;
 using Microsoft.Bot.Connector;
 
 namespace Core.Commands
 {
-    internal class NevsedomaPostImageCommand : CommandBase
+    internal class NevsedomaGirlsPostImageCommand : CommandBase
     {
-        protected override string ExactCommand => "POST2";
+        protected override string ExactCommand => "POST";
         protected override string[] ContainsCommands => new[] {
             "ДРУГ", "АЛЬТЕРНАТИВ", "НЕВСЕДОМА", "ПИНГ", "ТЕСТ"
         };
@@ -20,12 +19,19 @@ namespace Core.Commands
         {
             var settings = new StaticContentPosterSettings
             {
-                ResultCount = BotState.Instance.Get(activity.Conversation?.Id, Constants.PostCountParameter, 3),
-                SkipForCount = 7,
-                AvaliableIndexPages = 300
+                PostImageCount = 1,
+                SkipPostWhenLessThen = 8,
+                SkipFirstFromPost = 5,
+                AvaliableIndexPages = 500
             };
             var imagePoster = new StaticContentImagePoster(Randomizer, new PatternMatcher(), new NevsedomaGirlsProvider());
-            return await imagePoster.PostAsync(settings);
+            var imageCount = BotState.Instance.Get(activity.Conversation?.Id, Constants.PostCountParameter, 3);
+            var returnToList = new List<string>();
+            for (var i = 0; i < imageCount; i++)
+            {
+                returnToList.AddRange(await imagePoster.PostAsync(settings));
+            }
+            return returnToList;
         }
     }
 }

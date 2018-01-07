@@ -88,7 +88,9 @@
     <Compile Include="Commands\CommandBase.cs" />
     <Compile Include="Commands\HelpCommand.cs" />
     <Compile Include="Commands\InterractCommand.cs" />
-    <Compile Include="Commands\NevsedomaPostImageCommand.cs" />
+    <Compile Include="Commands\NevsedomaPostVideoCommand.cs" />
+    <Compile Include="Commands\NevsedomaGirlsPostImageCommand.cs" />
+    <Compile Include="Commands\NevsedomaSessionPostImageCommand.cs" />
     <Compile Include="Commands\KorzikPostImageCommand.cs" />
     <Compile Include="Commands\SetPostCountCommand.cs" />
     <Compile Include="Configuration\CoreResolver.cs" />
@@ -96,7 +98,10 @@
     <Compile Include="ICommandResponsible.cs" />
     <Compile Include="ImageManagers\ContentProviders\IStaticImageProvider.cs" />
     <Compile Include="ImageManagers\ContentProviders\KorzikEromiksProvider.cs" />
+    <Compile Include="ImageManagers\ContentProviders\NevsedomaBaseProvider.cs" />
+    <Compile Include="ImageManagers\ContentProviders\NevsedomaVideoProvider.cs" />
     <Compile Include="ImageManagers\ContentProviders\NevsedomaGirlsProvider.cs" />
+    <Compile Include="ImageManagers\ContentProviders\NevsedomaPhotoSessionProvider.cs" />
     <Compile Include="ImageManagers\IPatternMatcher.cs" />
     <Compile Include="ImageManagers\StaticContentImagePoster.cs" />
     <Compile Include="ImageManagers\PatternMatcher.cs" />

@@ -16,7 +16,9 @@ namespace Core.Configuration
                 .OnActivated(c => c.Instance.RegisterNext<InterractCommand>()
                     .RegisterNext<HelpCommand>()
                     .RegisterNext<SetPostCountCommand>()
-                    .RegisterNext<NevsedomaPostImageCommand>()
+                    .RegisterNext<NevsedomaSessionPostImageCommand>()
+                    .RegisterNext<NevsedomaGirlsPostImageCommand>()
+                    .RegisterNext<NevsedomaPostVideoCommand>()
                     .RegisterNext<KorzikPostImageCommand>());
         }
     }
