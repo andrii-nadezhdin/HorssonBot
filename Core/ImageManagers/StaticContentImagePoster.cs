@@ -10,7 +10,7 @@ namespace Core.ImageManagers
 {
     internal class StaticContentImagePoster
     {
-        private const int _maxTries = 100;
+        private const int _maxTries = 10;
 
 		protected readonly IRandomizer _randomizer;
 		protected readonly IPatternMatcher _patternMatcher;
