@@ -5,8 +5,8 @@ namespace Core.Base
     public interface IRandomizer
     {
         int GetRandom(int maxValue);
-        IList<T> GetRandomFromList<T>(IList<T> list, int count);
-        T GetRandomFromList<T>(IList<T> list);
+        List<T> GetRandomFromList<T>(List<T> list, int count);
+        T GetRandomFromList<T>(List<T> list);
         bool CheckIsLucky(int percent);
     }
 }

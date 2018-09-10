@@ -23,7 +23,7 @@ namespace Core.ImageManagers
 		    _imageProvider = imageProvider;
         }
 
-        public async Task<IList<string>> PostAsync(StaticContentPosterSettings settings)
+        public async Task<List<string>> PostAsync(StaticContentPosterSettings settings)
 		{
 			int tries = 0;
 			while (tries <= _maxTries)
@@ -52,7 +52,7 @@ namespace Core.ImageManagers
 			return null;
 		}
 
-        private async Task<IList<string>> GetImages(StaticContentPosterSettings settings, string topic)
+        private async Task<List<string>> GetImages(StaticContentPosterSettings settings, string topic)
         {
             string html;
             using (var client = new WebClient())

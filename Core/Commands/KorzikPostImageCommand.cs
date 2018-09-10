@@ -14,7 +14,7 @@ namespace Core.Commands
         protected override string[] Responses => new []{ "Держи", "Достаточно спама!", "Ок", "Сейчас поищу", "Лови лошадок", "Игого!", "Готово" };
         protected override int ChanseToResponseInPercent => 20;
 
-        protected override async Task<IList<string>> ExecuteInternalAsync(Activity activity)
+        protected override async Task<List<string>> ExecuteInternalAsync(Activity activity)
         {
             var settings = new StaticContentPosterSettings
             {

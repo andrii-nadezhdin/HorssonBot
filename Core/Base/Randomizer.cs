@@ -28,7 +28,7 @@ namespace Core.Base
             return Random.Next(maxValue);
         }
 
-        public IList<T> GetRandomFromList<T>(IList<T> list, int count)
+        public List<T> GetRandomFromList<T>(List<T> list, int count)
         {
             var ramdomedList = new List<T>();
             if (list.Count <= count)
@@ -49,7 +49,7 @@ namespace Core.Base
             return ramdomedList;
         }
 
-        public T GetRandomFromList<T>(IList<T> list)
+        public T GetRandomFromList<T>(List<T> list)
         {
             return list[Random.Next(list.Count)];
         }

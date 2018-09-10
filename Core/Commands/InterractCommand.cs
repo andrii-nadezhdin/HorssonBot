@@ -12,18 +12,18 @@ namespace Core.Commands
 
         protected override string ActivityType => ActivityTypes.ConversationUpdate;
 
-        protected override async Task<IList<string>> ExecuteInternalAsync(Activity activity)
+        protected override Task<List<string>> ExecuteInternalAsync(Activity activity)
         {
             var botId = activity.Recipient.Id;
             if (activity.MembersAdded != null && activity.MembersAdded.Any(m => m.Id != botId))
             {
-                return new List<string> { "Игого!" };
+                return Task.FromResult(new List<string> { "Игого!" });
             }
             if (activity.MembersRemoved != null && activity.MembersRemoved.Any(m => m.Id != botId))
             {
-                return new List<string> { "Игого... Игого..." };
+                return Task.FromResult(new List<string> { "Игого... Игого..." });
             }
-            return null;
+            return Task.FromResult<List<string>>(null);
         }
     }
 }

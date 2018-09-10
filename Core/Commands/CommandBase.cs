@@ -22,7 +22,7 @@ namespace Core.Commands
 
         private CommandBase _nextCommand;
 
-        protected abstract Task<IList<string>> ExecuteInternalAsync(Activity activity);
+        protected abstract Task<List<string>> ExecuteInternalAsync(Activity activity);
 
         public CommandBase RegisterNext<T>() where T: CommandBase, new()
         {

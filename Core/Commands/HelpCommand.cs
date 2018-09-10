@@ -11,9 +11,9 @@ namespace Core.Commands
         protected override string[] ContainsCommands => new[] { "HELP", "ПОМОЩ", "ПОМОГ", "ЧТО ТУТ ДЕЛАТЬ", "ЧЯВО", "ЧЕ КАК" };
         protected override string[] Responses { get => null; }
 
-        protected override async Task<IList<string>> ExecuteInternalAsync(Activity activity)
+        protected override Task<List<string>> ExecuteInternalAsync(Activity activity)
         {
-            return new List<string>
+            var responses = new List<string>
             {
                 "Бот лошадка IV:",
                 "**HELP** -- справка",
@@ -23,6 +23,7 @@ namespace Core.Commands
                 "**ЧТО УГОДНО** -- картинки от Коржика",
                 "**SET POST COUNT** -- настройка количества излучаемого добра",
             };
+            return Task.FromResult(responses);
         }
     }
 }

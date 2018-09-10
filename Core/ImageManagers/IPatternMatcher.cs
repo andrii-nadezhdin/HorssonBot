@@ -4,6 +4,6 @@ namespace Core.ImageManagers
 {
     internal interface IPatternMatcher
     {
-        IList<string> GetPatternValues(string text, string pattern);
+        List<string> GetPatternValues(string text, string pattern);
     }
 }

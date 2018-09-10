@@ -5,7 +5,7 @@ namespace Core.ImageManagers
 {
     internal class PatternMatcher : IPatternMatcher
     {
-        public IList<string> GetPatternValues(string text, string pattern)
+        public List<string> GetPatternValues(string text, string pattern)
         {
             var matches = Regex.Matches(text, pattern, RegexOptions.Compiled);
             var list = new List<string>();
