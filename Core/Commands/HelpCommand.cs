@@ -19,7 +19,6 @@ namespace Core.Commands
                 "**HELP** -- справка",
                 "**POST** -- картинки от Невседома",
                 "**PROFESSION** -- фото от профессионалов",
-                "**MOVIE** -- кино :)",
                 "**ЧТО УГОДНО** -- картинки от Коржика"
             };
             return Task.FromResult(responses);

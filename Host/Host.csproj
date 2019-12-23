@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <LangVersion>latest</LangVersion>
     <ApplicationInsightsResourceId>/subscriptions/858c34e6-91a1-4dd5-a531-ed00358ef258/resourcegroups/HorssonBotResources/providers/microsoft.insights/components/HorssonBotForHorsesChat</ApplicationInsightsResourceId>
+    <UserSecretsId>98ac6fd4-be5a-44d9-9f13-d5e21099599d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

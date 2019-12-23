@@ -18,7 +18,6 @@ namespace Core
             RegisterNext<HelpCommand>()
                 .RegisterNext<NevsedomaSessionPostImageCommand>()
                 .RegisterNext<NevsedomaGirlsPostImageCommand>()
-                .RegisterNext<NevsedomaPostVideoCommand>()
                 .RegisterNext<KorzikPostImageCommand>();
         }
 

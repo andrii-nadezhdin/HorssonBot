@@ -25,11 +25,7 @@ namespace Core.Commands
             };
             var imagePoster = new StaticContentImagePoster(Randomizer, new PatternMatcher(), new NevsedomaGirlsProvider());
             var returnToList = new List<string>();
-            for (var i = 0; i < Constants.ImagePostCount; i++)
-            {
-                returnToList.AddRange(await imagePoster.PostAsync(settings));
-            }
-            return returnToList;
+            return await imagePoster.PostAsync(settings);
         }
     }
 }
