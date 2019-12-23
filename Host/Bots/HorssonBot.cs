@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mime;
@@ -39,7 +40,10 @@ namespace NewHost.Bots
             var responses = await _commandResponsible.ExecuteAsync(turnContext.Activity);
             foreach (var response in responses ?? Enumerable.Empty<string>())
             {
-                await turnContext.SendActivityAsync(MessageFactory.ContentUrl(response, MediaTypeNames.Image.Jpeg), cancellationToken);
+                await turnContext.SendActivityAsync(
+                    Uri.IsWellFormedUriString(response, UriKind.Absolute) ? 
+                        MessageFactory.ContentUrl(response, MediaTypeNames.Image.Jpeg) :
+                        MessageFactory.Text(response), cancellationToken);
             }
         }
     }
