@@ -1,116 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0D586177-26BF-4F13-928D-402817891FDF}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Core</RootNamespace>
-    <AssemblyName>Core</AssemblyName>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Autofac, Version=4.6.2.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\packages\Autofac.4.6.2\lib\net45\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Bot.Connector, Version=3.12.2.4, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bot.Connector.3.12.2.4\lib\net46\Microsoft.Bot.Connector.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Logging, Version=1.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Logging.1.1.4\lib\net451\Microsoft.IdentityModel.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Protocols, Version=2.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.2.1.4\lib\net451\Microsoft.IdentityModel.Protocols.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect, Version=2.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Protocols.OpenIdConnect.2.1.4\lib\net451\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.5.1.4\lib\net451\Microsoft.IdentityModel.Tokens.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Rest.ClientRuntime, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Rest.ClientRuntime.2.3.2\lib\net45\Microsoft.Rest.ClientRuntime.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.1.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.5.1.4\lib\net451\System.IdentityModel.Tokens.Jwt.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Compression.FileSystem" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.WebRequest" />
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Microsoft.Bot.Schema" Version="4.7.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.2.0" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Base\IRandomizer.cs" />
-    <Compile Include="Base\Randomizer.cs" />
-    <Compile Include="Base\Resolver.cs" />
-    <Compile Include="BotState.cs" />
-    <Compile Include="CommandResponsible.cs" />
-    <Compile Include="Commands\CommandBase.cs" />
-    <Compile Include="Commands\HelpCommand.cs" />
-    <Compile Include="Commands\InterractCommand.cs" />
-    <Compile Include="Commands\NevsedomaPostVideoCommand.cs" />
-    <Compile Include="Commands\NevsedomaGirlsPostImageCommand.cs" />
-    <Compile Include="Commands\NevsedomaSessionPostImageCommand.cs" />
-    <Compile Include="Commands\KorzikPostImageCommand.cs" />
-    <Compile Include="Commands\SetPostCountCommand.cs" />
-    <Compile Include="Configuration\CoreResolver.cs" />
-    <Compile Include="Constants.cs" />
-    <Compile Include="ICommandResponsible.cs" />
-    <Compile Include="ImageManagers\ContentProviders\IStaticImageProvider.cs" />
-    <Compile Include="ImageManagers\ContentProviders\KorzikEromiksProvider.cs" />
-    <Compile Include="ImageManagers\ContentProviders\NevsedomaBaseProvider.cs" />
-    <Compile Include="ImageManagers\ContentProviders\NevsedomaVideoProvider.cs" />
-    <Compile Include="ImageManagers\ContentProviders\NevsedomaGirlsProvider.cs" />
-    <Compile Include="ImageManagers\ContentProviders\NevsedomaPhotoSessionProvider.cs" />
-    <Compile Include="ImageManagers\IPatternMatcher.cs" />
-    <Compile Include="ImageManagers\StaticContentImagePoster.cs" />
-    <Compile Include="ImageManagers\PatternMatcher.cs" />
-    <Compile Include="ImageManagers\StaticContentPosterSettings.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>

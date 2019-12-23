@@ -12,7 +12,7 @@ namespace Core.ImageManagers
     {
         private const int _maxTries = 10;
 
-		protected readonly IRandomizer _randomizer;
+        protected readonly IRandomizer _randomizer;
 		protected readonly IPatternMatcher _patternMatcher;
         protected readonly IStaticImageProvider _imageProvider;
 
@@ -23,7 +23,7 @@ namespace Core.ImageManagers
 		    _imageProvider = imageProvider;
         }
 
-        public async Task<IList<string>> PostAsync(StaticContentPosterSettings settings)
+        public async Task<List<string>> PostAsync(StaticContentPosterSettings settings)
 		{
 			int tries = 0;
 			while (tries <= _maxTries)
@@ -52,7 +52,7 @@ namespace Core.ImageManagers
 			return null;
 		}
 
-        private async Task<IList<string>> GetImages(StaticContentPosterSettings settings, string topic)
+        private async Task<List<string>> GetImages(StaticContentPosterSettings settings, string topic)
         {
             string html;
             using (var client = new WebClient())
@@ -63,8 +63,8 @@ namespace Core.ImageManagers
                 .ToList();
             if (list.Count == 0)
                 return null;
-            if (list.Count >= settings.PostImageCount && list.Count >= settings.SkipPostWhenLessThen)
-                return _randomizer.GetRandomFromList(list, settings.PostImageCount);
+            if (list.Count >= Constants.ImagePostCount && list.Count >= settings.SkipPostWhenLessThen)
+                return _randomizer.GetRandomFromList(list, Constants.ImagePostCount);
             return null;
         }
     }

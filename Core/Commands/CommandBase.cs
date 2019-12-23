@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Base;
-using Microsoft.Bot.Connector;
+using Microsoft.Bot.Schema;
 
 namespace Core.Commands
 {
@@ -22,7 +22,7 @@ namespace Core.Commands
 
         private CommandBase _nextCommand;
 
-        protected abstract Task<IList<string>> ExecuteInternalAsync(Activity activity);
+        protected abstract Task<List<string>> ExecuteInternalAsync(IMessageActivity activity);
 
         public CommandBase RegisterNext<T>() where T: CommandBase, new()
         {
@@ -31,7 +31,7 @@ namespace Core.Commands
             return _nextCommand;
         }
 
-        public async Task<IList<string>> ExecuteAsync(Activity activity)
+        public async Task<IList<string>> ExecuteAsync(IMessageActivity activity)
         {
             var messageActivity = activity.AsMessageActivity();
             if (messageActivity == null)
@@ -44,7 +44,7 @@ namespace Core.Commands
             return null;
         }
 
-        private async Task<IList<string>> ProcessActivityByType(Activity activity)
+        private async Task<IList<string>> ProcessActivityByType(IMessageActivity activity)
         {
             if (activity.Type == ActivityType)
                 return await PrepareExecutingAsync(activity);
@@ -53,7 +53,7 @@ namespace Core.Commands
             return null;
         }
 
-        private async Task<IList<string>> PrepareExecutingAsync(Activity activity)
+        private async Task<IList<string>> PrepareExecutingAsync(IMessageActivity activity)
         {
             var responses = new List<string>();
             if (Responses != null && Responses.Any() && Randomizer.CheckIsLucky(ChanseToResponseInPercent))

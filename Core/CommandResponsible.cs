@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Core.Base;
 using Core.Commands;
-using Microsoft.Bot.Connector;
+using Microsoft.Bot.Schema;
 
 namespace Core
 {
@@ -14,9 +14,15 @@ namespace Core
         public CommandResponsible(IRandomizer randomizer)
         {
             Randomizer = randomizer;
+
+            RegisterNext<HelpCommand>()
+                .RegisterNext<NevsedomaSessionPostImageCommand>()
+                .RegisterNext<NevsedomaGirlsPostImageCommand>()
+                .RegisterNext<NevsedomaPostVideoCommand>()
+                .RegisterNext<KorzikPostImageCommand>();
         }
 
-        public async Task<IList<string>> ExecuteAsync(Activity activity)
+        public async Task<IList<string>> ExecuteAsync(IMessageActivity activity)
         {
             if (_firstCommand == null)
             {

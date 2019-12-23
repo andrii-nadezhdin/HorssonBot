@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Microsoft.Bot.Connector;
+using Microsoft.Bot.Schema;
 
 namespace Core.Commands
 {
@@ -11,18 +11,18 @@ namespace Core.Commands
         protected override string[] ContainsCommands => new[] { "HELP", "ПОМОЩ", "ПОМОГ", "ЧТО ТУТ ДЕЛАТЬ", "ЧЯВО", "ЧЕ КАК" };
         protected override string[] Responses { get => null; }
 
-        protected override async Task<IList<string>> ExecuteInternalAsync(Activity activity)
+        protected override Task<List<string>> ExecuteInternalAsync(IMessageActivity activity)
         {
-            return new List<string>
+            var responses = new List<string>
             {
-                "Бот лошадка IV:",
+                "Бот лошадка V:",
                 "**HELP** -- справка",
                 "**POST** -- картинки от Невседома",
-                "**PROSESSION** -- фото от профессионалов",
+                "**PROFESSION** -- фото от профессионалов",
                 "**MOVIE** -- кино :)",
-                "**ЧТО УГОДНО** -- картинки от Коржика",
-                "**SET POST COUNT** -- настройка количества излучаемого добра",
+                "**ЧТО УГОДНО** -- картинки от Коржика"
             };
+            return Task.FromResult(responses);
         }
     }
 }
