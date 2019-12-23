@@ -12,7 +12,7 @@ namespace Core.ImageManagers
     {
         private const int _maxTries = 10;
 
-		protected readonly IRandomizer _randomizer;
+        protected readonly IRandomizer _randomizer;
 		protected readonly IPatternMatcher _patternMatcher;
         protected readonly IStaticImageProvider _imageProvider;
 
@@ -63,8 +63,8 @@ namespace Core.ImageManagers
                 .ToList();
             if (list.Count == 0)
                 return null;
-            if (list.Count >= settings.PostImageCount && list.Count >= settings.SkipPostWhenLessThen)
-                return _randomizer.GetRandomFromList(list, settings.PostImageCount);
+            if (list.Count >= Constants.ImagePostCount && list.Count >= settings.SkipPostWhenLessThen)
+                return _randomizer.GetRandomFromList(list, Constants.ImagePostCount);
             return null;
         }
     }

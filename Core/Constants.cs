@@ -2,8 +2,7 @@
 {
     internal static class Constants
     {
-        public const string PostCountParameter = "PostCount";
-        public const string ImagePoolParameter = "ImagePool";
+        public const int ImagePostCount = 3;
         public const string BotName = "HorssonBot";
         public const int HundredPercent = 100;
     }

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Core.ImageManagers;
 using Core.ImageManagers.ContentProviders;
-using Microsoft.Bot.Connector;
+using Microsoft.Bot.Schema;
 
 namespace Core.Commands
 {
@@ -15,19 +15,17 @@ namespace Core.Commands
         protected override string[] Responses => new []{ "Слушаюсь и повинуюсь", "Да будет так", "Ок", "Прррр!", "Игого!"};
         protected override int ChanseToResponseInPercent => 30;
 
-        protected override async Task<List<string>> ExecuteInternalAsync(Activity activity)
+        protected override async Task<List<string>> ExecuteInternalAsync(IMessageActivity activity)
         {
             var settings = new StaticContentPosterSettings
             {
-                PostImageCount = 1,
                 SkipPostWhenLessThen = 8,
                 SkipFirstFromPost = 5,
                 AvaliableIndexPages = 500
             };
             var imagePoster = new StaticContentImagePoster(Randomizer, new PatternMatcher(), new NevsedomaGirlsProvider());
-            var imageCount = BotState.Instance.Get(activity.Conversation?.Id, Constants.PostCountParameter, 3);
             var returnToList = new List<string>();
-            for (var i = 0; i < imageCount; i++)
+            for (var i = 0; i < Constants.ImagePostCount; i++)
             {
                 returnToList.AddRange(await imagePoster.PostAsync(settings));
             }
