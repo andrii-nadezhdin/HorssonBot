@@ -10,6 +10,7 @@
 
         public string PostPattern => $"<a.*?class=\"s-img\".*?href=\"(.*?{_rootUri}/index.php[?]newsid=.*?)\">[\\s\\S]{{1,900}}{RaitingPattern}";
         public virtual string ImagePattern => $"<img.*?src=\"(.*?{_rootUri}.*?jpg)\".*?/>";
+        public string RootUri => $"{_schema}//{_rootUri}";
 
         public string GenerateIndexPageUrl(int page)
         {

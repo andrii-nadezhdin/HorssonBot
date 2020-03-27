@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Core.Base;
+using Core.Extensions;
 using Core.ImageManagers.ContentProviders;
 
 namespace Core.ImageManagers
@@ -59,7 +60,9 @@ namespace Core.ImageManagers
                 html = await client.DownloadStringTaskAsync(topic);
             var list = _patternMatcher.GetPatternValues(html, _imageProvider.ImagePattern)
                 ?.Skip(settings.SkipFirstFromPost)
-                .Where(u => Uri.IsWellFormedUriString(u, UriKind.Absolute))
+                .Where(u => Uri.IsWellFormedUriString(u, UriKind.RelativeOrAbsolute))
+                .Select(u => Uri.IsWellFormedUriString(u, UriKind.Relative) ?
+                    _imageProvider.RootUri.CombineUrl(u) : u)
                 .ToList();
             if (list.Count == 0)
                 return null;
