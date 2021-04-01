@@ -55,10 +55,8 @@ namespace Core.ImageManagers
 
         private async Task<List<string>> GetImages(StaticContentPosterSettings settings, string topic)
         {
-            string html;
-            using (var client = new WebClient())
-                html = await client.DownloadStringTaskAsync(topic);
-            var list = _patternMatcher.GetPatternValues(html, _imageProvider.ImagePattern)
+			var html = await _imageProvider.GetTopicContentAsync(topic);
+			var list = _patternMatcher.GetPatternValues(html, _imageProvider.ImagePattern)
                 ?.Skip(settings.SkipFirstFromPost)
                 .Where(u => Uri.IsWellFormedUriString(u, UriKind.RelativeOrAbsolute))
                 .Select(u => Uri.IsWellFormedUriString(u, UriKind.Relative) ?

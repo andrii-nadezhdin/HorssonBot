@@ -1,4 +1,7 @@
-﻿namespace Core.ImageManagers.ContentProviders
+﻿using System.Net;
+using System.Threading.Tasks;
+
+namespace Core.ImageManagers.ContentProviders
 {
     internal interface IStaticImageProvider
     {
@@ -6,5 +9,13 @@
         string ImagePattern { get; }
         string RootUri { get; }
         string GenerateIndexPageUrl(int page);
+
+        async Task<string> GetTopicContentAsync(string url)
+        {
+            using (var client = new WebClient())
+            {
+                return await client.DownloadStringTaskAsync(url);
+            }
+        }
     }
 }

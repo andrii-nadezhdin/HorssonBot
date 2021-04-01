@@ -12,7 +12,6 @@ namespace Core.Configuration
             services.AddTransient<IRandomizer, Randomizer>();
             services.AddSingleton<IPatternMatcher, PatternMatcher>();
             services.AddSingleton<ICommandResponsible, CommandResponsible>();
-
             return services;
         }
     }
