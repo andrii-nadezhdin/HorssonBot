@@ -10,7 +10,7 @@ namespace Core.ImageManagers.ContentProviders
         string RootUri { get; }
         string GenerateIndexPageUrl(int page);
 
-        async Task<string> GetTopicContentAsync(string url)
+        async Task<string> GetContentAsync(string url)
         {
             using (var client = new WebClient())
             {

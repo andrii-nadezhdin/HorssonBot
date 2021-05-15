@@ -8,6 +8,21 @@ namespace Core.ImageManagers.ContentProviders
 {
     internal class KorzikEromiksProvider : IStaticImageProvider
     {
+        private readonly static CookieAwareWebClient _client;
+
+        static KorzikEromiksProvider()
+        {
+            var values = new NameValueCollection
+            {
+                { "login_name", Environment.GetEnvironmentVariable("korzik_login_name") },
+                { "login_password", Environment.GetEnvironmentVariable("korzik_login_password")  },
+                { "login", "submit" }
+            };
+            _client = new CookieAwareWebClient();
+            _client.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+            _client.UploadValues($"{_schema}://{_rootUri}", "POST", values);
+        }
+
         private const string _schema = "https";
         private const string _rootUri = "korzik.net";
 
@@ -21,22 +36,9 @@ namespace Core.ImageManagers.ContentProviders
             return $"{_schema}://{_rootUri}/erotika/page/{page}/";
         }
 
-        public async Task<string> GetTopicContentAsync(string url)
+        public async Task<string> GetContentAsync(string url)
         {
-            var values = new NameValueCollection
-            {
-                { "login_name", Environment.GetEnvironmentVariable("korzik_login_name") },
-                { "login_password", Environment.GetEnvironmentVariable("korzik_login_password")  },
-                { "login", "submit" }
-            };
-            using var client = new CookieAwareWebClient();
-            client.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
-            var result = client.UploadValues(RootUri, "POST", values);
-            var sessionId = client.ResponseCookies["PHPSESSID"]?.Value;
-            if (string.IsNullOrWhiteSpace(sessionId))
-                throw new ArgumentNullException($"{nameof(sessionId)} should not be empty or null");
-            client.Headers.Add(HttpRequestHeader.Cookie, sessionId);
-            return await client.DownloadStringTaskAsync(url);
+            return await _client.DownloadStringTaskAsync(url);
         }
     }
 }
